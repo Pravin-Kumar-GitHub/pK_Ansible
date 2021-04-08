@@ -1,0 +1,5 @@
+---
+- name: To display index.html page  
+  template:
+    src: index.html.j2
+    dest: "{{apache_homepage_path}}"

@@ -1,0 +1,14 @@
+---
+# handlers file for pkindustries.apache
+handlers:
+  - name: restart_rhel_apache
+    service:
+      name: "{{ apache_package_rhel }}"
+      state: restarted
+    when: ansible_os_family == "RedHat"
+
+  - name: restart_deb_apache
+    service:
+      name: "{{ apache_package_deb }}"
+      state: restarted
+    when: ansible_os_family == "Debian"
