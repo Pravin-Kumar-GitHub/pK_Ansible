@@ -28,6 +28,11 @@
     state: started
     enabled: yes
 
+- name: To display index.html page  
+  template:
+    src: index.html.j2
+    dest: "{{apache_homepage_path}}"
+
 - name: Test by print
   debug:
     msg: Firing notification for RedHat
@@ -39,3 +44,6 @@
     msg: Firing notification for Debian
   notify: restart_deb_apache
   when: ansible_os_family == "Debian"
+
+  handlers:
+    - include: /home/Pravin/pK_Ansible/Roles/pkindustries.apache/handlers/main.yml
